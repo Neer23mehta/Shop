@@ -1,0 +1,47 @@
+/* Main Container */
+.Main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #f4f4f9;
+    padding: 10px;
+}
+
+/* Form Styling */
+.Form-main {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.Form-main label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.Form-main input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.Form-main input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.Form-main button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3e3f41;
+    color: white
+}

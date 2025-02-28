@@ -1,0 +1,138 @@
+/* Cart.css */
+
+/* General Styles */
+.Cart-Main {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+  .Cart-Main h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+  
+  /* Cart List */
+  .Cart-ul {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .Cart-ul ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .Cart-ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .Cart-ul li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image Section */
+  .Cart-ul .Image img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Content Section */
+  .Cart-ul .Content {
+    flex-grow: 1;
+    margin-left: 15px;
+  }
+  
+  .Cart-ul .Content h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+  
+  .Cart-ul .Content h3 {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .Cart-ul .Content p {
+    font-size: 1em;
+    color: #444;
+  }
+  
+  /* Buttons Section */
+  .Cart-ul button {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+  }
+  
+  .Cart-ul button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .Cart-ul button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .Cart-ul button:last-child {
+    background-color: #4caf50;
+  }
+  
+  .Cart-ul button:last-child:hover {
+    background-color: #388e3c;
+  }
+  
+  .Total {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Total h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .Total button {
+    background-color: #353738;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .Total button:hover {
+    background-color: #101111;
+  }
+  
+  .Total button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  

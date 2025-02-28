@@ -1,0 +1,50 @@
+/* Main Nav Container */
+.Main-Nav {
+    background-color: #333; /* Dark background for the navbar */
+    padding: 15px;
+    display: inline;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .Main-Nav .Logo h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  nav {
+    display: flex;
+    gap: 20px; 
+    align-items: center;
+  }
+  .List{
+    display: contents;
+  }
+  .List li {
+    list-style: none;
+    background-color: #333;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+  }
+  .List li:hover{
+    transform: none;
+  }
+  nav a {
+    color: rgb(10, 4, 4);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 25px;
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
+  }
+#I1{
+  margin-bottom: 10px;
+}  
+#I2{
+  margin-bottom: 10px;
+}
+  

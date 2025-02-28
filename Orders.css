@@ -1,0 +1,78 @@
+.Order {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+#hh {
+    text-align: center;
+    color: #2d2d2d;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.confirmed-order {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.uLs {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.LIES {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.LIES img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.LIES p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.LIES p:first-of-type {
+    font-weight: bold;
+}
+
+.LIES p:nth-of-type(2) {
+    color: #ff6600;
+}
+
+.LIES p:last-of-type {
+    font-weight: bold;
+}
+
+p {
+    font-size: 1rem;
+    color: #333;
+}
+
+p.no-orders {
+    font-size: 1.2rem;
+    color: #999;
+    text-align: center;
+}

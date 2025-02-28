@@ -1,0 +1,96 @@
+.Products-Main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.Images {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    height: auto;
+    width: auto;
+}
+
+.Images img {
+    max-width: 100%;
+    max-height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+div {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h3, h4 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+}
+
+h2 {
+    /* font-size: 30px; */
+    /* color: #e60000; */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button {
+    align-self: flex-end;
+    padding: 10px ;
+    background-color: #111111;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0b0c0c;
+}
+
+@media (max-width: 768px) {
+    .Products-Main {
+        flex-direction: column;
+    }
+
+    .Images img {
+        max-height: 250px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+}
