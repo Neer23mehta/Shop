@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "/home/tristate/Desktop/Neer/neer/src/EcommerseUI/Signin.css";
+import { Bounce, toast } from 'react-toastify';
 
 const Key = "Inp-Data";
 
@@ -14,7 +15,11 @@ export const SignUP = () => {
     password: '',
     username: '',
   });
+  const generateOrderId = () => {
+    return `ORDER-${new Date().getTime()}-${Math.floor(Math.random() * 1000)}`;
+  };
 
+  const id = generateOrderId();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -30,14 +35,17 @@ export const SignUP = () => {
       alert("Password should be at least 6 characters long, with at least 1 uppercase letter and 1 number");
       return;
     }
-
+   
     const newUser = {
       ...inp,
-      username: inp.email, 
+      id,
+      username: inp.email,
     };
 
+
+
     try {
-      const response = await fetch('http://localhost:5001/users', {
+      const response = await fetch('http://localhost:5000/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +61,20 @@ export const SignUP = () => {
       console.log('User signed up:', data);
 
       localStorage.setItem(Key, JSON.stringify(data));
-      alert("Signup successful!");
+      toast.success("Signup successful!",{
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        style: {
+          backgroundColor: 'Green', 
+        },
+      });
       setInp({    firstname: '',
         middlename: '',
         lastname: '',
@@ -121,7 +142,7 @@ export const SignUP = () => {
           />
           <label>Phone Number:</label>
           <input
-            type="number"
+            type="tel"
             placeholder="Phone Number"
             required
             value={inp.mobilenumber}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux'; 
-import { setUserId } from './Store/StoreR'; 
+import { useDispatch } from 'react-redux';
+import { setUserCart, setUserId } from './Store/StoreR';
 import "/home/tristate/Desktop/Neer/neer/src/EcommerseUI/Login.css";
 
 export const LogIN = ({ setIsLoggedIn }) => {
@@ -12,7 +12,7 @@ export const LogIN = ({ setIsLoggedIn }) => {
 
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,21 +21,34 @@ export const LogIN = ({ setIsLoggedIn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const response = await fetch("http://localhost:5001/users");
+      const response = await fetch("http://localhost:5000/users");
       const users = await response.json();
-
+  
       const user = users.find(
         (user) => user.email === input.username && user.password === input.password
       );
-
+  
       if (user) {
-        const userToken = { username: user.username, id: user.username };
+        const userToken = { username: user.username, id: user.id };
         localStorage.setItem('userToken', JSON.stringify(userToken));
-
+  
         dispatch(setUserId(user.id));
-
+        console.log("id", user.id);
+  
+        const cartResponse = await fetch(`http://localhost:3004/posts?userId=${user.id}`);
+        const cartData = await cartResponse.json();
+        console.log("cartdatas", cartData);
+  
+        if (cartData.length > 0) {
+          dispatch(setUserCart({
+            items: cartData[0].cartItems,
+            totalPrice: cartData[0].totalPrice,
+            totalQuantity: cartData[0].totalQuantity,
+          }));
+        }
+  
         setIsLoggedIn(true);
         setInput({ username: '', password: '' });
         navigate('/');
@@ -46,6 +59,9 @@ export const LogIN = ({ setIsLoggedIn }) => {
       setError('An error occurred while logging in. Please try again.');
     }
   };
+  
+
+
 
   return (
     <div className='Main-f'>
@@ -72,7 +88,7 @@ export const LogIN = ({ setIsLoggedIn }) => {
             required
           />
         </div>
-        <button type="submit">Log In</button>
+        <button type="submit">Confirm</button>
         <div>
           <h6>Don't Have an Account Create New <NavLink to="/signin">Sign-UP</NavLink></h6>
         </div>

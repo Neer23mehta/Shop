@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import "../EcommerseUI/Orders.css";
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 export const Orders = () => {
     const confirmOrder = useSelector((state) => state.confirmOrder); 
@@ -18,7 +19,8 @@ export const Orders = () => {
 //    useEffect(()=>{
 //     getapis();
 //    },[])
-    console.log("hello")
+    // console.log("hello")
+    // console.log("confirm",confirmOrder)
     return (
         <div className="Order">
             <h2 id="hh">Confirmed Orders</h2>

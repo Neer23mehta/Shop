@@ -18,6 +18,7 @@ const initialState = {
     totalPrice: 0,
     totalQuantity: 0,
     confirmOrder: [],
+    cartData: [],
 };
 
 export const reactRedux = (state = initialState, action) => {
@@ -25,15 +26,15 @@ export const reactRedux = (state = initialState, action) => {
         case ADD_ITEMS:
             const newItem = action.payload;
             const existingItem = state.items.find((item) => item.id === newItem.id);
-
+        
             if (existingItem) {
                 const updatedItems = state.items.map((item) =>
                     item.id === newItem.id
                         ? { ...item, quantity: item.quantity + 1 }
                         : item
                 );
-                const updatedTotalPrice = state.totalPrice + newItem.price;
-                const updatedTotalQuantity = state.totalQuantity + 1;
+                const updatedTotalPrice = updatedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+                const updatedTotalQuantity = updatedItems.reduce((acc, item) => acc + item.quantity, 0);
                 return {
                     ...state,
                     items: updatedItems,
@@ -50,6 +51,7 @@ export const reactRedux = (state = initialState, action) => {
                     totalQuantity: updatedTotalQuantity,
                 };
             }
+        
 
         case DELETE_ITEMS:
             const deletedItem = state.items.find((item) => item.id === action.payload);
@@ -83,9 +85,12 @@ export const reactRedux = (state = initialState, action) => {
             const newItems = action.payload;
             return {
                 ...state,
-                items: newItems.items,
+                // items: [...state.items,{...newItems}],
+                items : [...newItems.items],
                 totalPrice: newItems.totalPrice,
                 totalQuantity: newItems.totalQuantity,
+                // cartData: [...state.cartData,newItems],
+                // items: [...state.cartData,newItems],
             };
 
         case SET_USER_ID:
@@ -125,11 +130,11 @@ export const additems = (data, userid) => {
         dispatch({ type: ADD_ITEMS, payload: data });
 
         const state = getState();
-        const cartDetails = state.items;
-
-        postApi(userid, cartDetails);
+        console.log("State after dispatch:", state); 
+        postApi(userid, state.items); 
     };
 };
+
 export const deleteitems = (id) => {
     return async (dispatch, getState) => {
         try {
@@ -148,13 +153,13 @@ export const deleteitems = (id) => {
 export const updateQuantity = (id, quantity) => {
     return { type: UPDATE_QUANTITY, payload: { id, quantity } };
 };
-
 export const setUserCart = (cartData) => {
     return {
-        type: SET_USER_CART,
-        payload: cartData,
+      type: SET_USER_CART,
+      payload: cartData,
     };
-};
+  };
+  
 
 export const setUserId = (userId) => {
     return {

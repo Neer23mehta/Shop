@@ -115,6 +115,7 @@ export const Buynow = () => {
         if (validateForm()) {
             localStorage.setItem(key, JSON.stringify(input));
         }
+        localStorage.removeItem(key)
     };
 
     const handleorder = () => {

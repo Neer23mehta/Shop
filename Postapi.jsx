@@ -70,7 +70,12 @@ export const postApi = (userid, cartDetails) => {
     });
 };
 
+// export const postApis = (userid, items) => {
 
+//     return axios.post ("http://localhost:5000/users",{
+
+//     })
+// }
 
 export const putApi = async (userId, cartDetails) => {
     try {
@@ -83,7 +88,7 @@ export const putApi = async (userId, cartDetails) => {
 
         const response = await axios.put("http://localhost:3004/posts", payload);
 
-        if (response.status === 200) {
+        if (response.status === 201) {
             console.log("Data saved successfully:", response.data);
             return response.data;
         } else {
