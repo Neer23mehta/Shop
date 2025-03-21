@@ -1,0 +1,60 @@
+{
+    "countries": [
+      {
+        "name": "United States",
+        "population": 331002651,
+        "region": "Americas",
+        "capital": "Washington, D.C.",
+        "flags": {
+          "colors": ["red", "white", "blue"],
+          "shape": "rectangle",
+          "symbol": "stars and stripes"
+        }
+      },
+      {
+        "name": "India",
+        "population": 1380004385,
+        "region": "Asia",
+        "capital": "New Delhi",
+        "flags": {
+          "colors": ["orange", "white", "green", "blue"],
+          "shape": "rectangle",
+          "symbol": "chakra"
+        }
+      },
+      {
+        "name": "France",
+        "population": 67391582,
+        "region": "Europe",
+        "capital": "Paris",
+        "flags": {
+          "colors": ["blue", "white", "red"],
+          "shape": "rectangle",
+          "symbol": "tricolor"
+        }
+      },
+      {
+        "name": "Brazil",
+        "population": 211049527,
+        "region": "Americas",
+        "capital": "Brasília",
+        "flags": {
+          "colors": ["green", "yellow", "blue"],
+          "shape": "rectangle",
+          "symbol": "diamond and stars"
+        }
+      },
+      {
+        "name": "Japan",
+        "population": 126476461,
+        "region": "Asia",
+        "capital": "Tokyo",
+        "flags": {
+          "colors": ["red", "white"],
+          "shape": "rectangle",
+          "symbol": "circle"
+        }
+      }
+    ]
+  }
+  
