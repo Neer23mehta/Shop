@@ -44,7 +44,7 @@ export const SignUP = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:3004/users', {
+      const response = await fetch('http://localhost:4001/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

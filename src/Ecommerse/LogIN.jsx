@@ -22,7 +22,7 @@ export const LogIN = ({ setIsLoggedIn }) => {
     e.preventDefault();
   
     try {
-      const response = await fetch("http://localhost:3004/users");
+      const response = await fetch("http://localhost:3009/users");
       const users = await response.json();
   
       const user = users.find(
@@ -36,7 +36,7 @@ export const LogIN = ({ setIsLoggedIn }) => {
         dispatch(setUserId(user.id));
         console.log("id", user.id);
   
-        const cartResponse = await fetch(`http://localhost:3004/posts?userId=${user.id}`);
+        const cartResponse = await fetch(`http://localhost:3009/posts?userId=${user.id}`);
         const cartData = await cartResponse.json();
         console.log("cartdatas", cartData);
   

@@ -8,9 +8,11 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { persistor, store } from './Ecommerse/Store/StoreR';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ToastContainer } from 'react-toastify';
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient();
 root.render(
   <Auth0Provider
     domain="dev-5kpc2gfunxrmstyt.us.auth0.com"
@@ -21,8 +23,11 @@ root.render(
   >
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <App />
-        <ToastContainer/>
+        <QueryClientProvider client={queryClient}>
+          <App />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+        <ToastContainer />
       </PersistGate>
     </Provider>
   </Auth0Provider>,

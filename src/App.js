@@ -19,7 +19,8 @@ import { OrderNow } from './Ecommerse/OrderNow';
 import { Orders } from './Ecommerse/Orders';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Postqc from './Ecommerse/Postqc';
+import Postrq from './Ecommerse/Postrq';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -94,6 +95,14 @@ function App() {
           path: "/log-in",
           element: <LogIN setIsLoggedIn={setIsLoggedIn} />,
         },
+        {
+          path: "/neer",
+          element: <Postqc/>
+        },
+        {
+          path: "/neer/:neerid",  
+          element: <Postrq />
+        }
       ],
     }
   ]);
