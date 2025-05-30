@@ -223,3 +223,5 @@ export const confirmorder = (order) => {
 // });
 
 // export {store};
+
+//we can use it as a hook 
