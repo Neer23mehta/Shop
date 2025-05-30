@@ -177,3 +177,49 @@ export const setUserId = (userId) => {
 export const confirmorder = (order) => {
     return {type: CONFIRM,payload: order}
 }
+
+// import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
+// import axios from "axios";
+
+// const apiSlice = createApi({
+//     baseQuery: fakeBaseQuery(),
+//     endpoints: (builder) => ({
+//         getAllTodos: builder.query({
+//             queryFn: async () => {
+//                 try {
+//                     const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
+//                     return { data: response.data, error: null };
+//                 } catch (error) {
+//                     console.log(error)
+//                 }                
+//             }
+//         }),
+//         getAnotherTodo: builder.query({
+//             queryFn: async () => {
+//                 try {
+//                     const res = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+//                     return { data: res.data, error: null };
+//                 } catch (error) {
+//                     console.log(error)
+//                 }
+//             }
+//         })
+//     })
+// });
+
+// export default apiSlice;
+
+// export const { useGetAllTodosQuery, useGetAnotherTodoQuery } = apiSlice; 
+
+// import { configureStore } from "@reduxjs/toolkit";
+// import apiSlice from "./apiSlice";
+
+
+// const store = configureStore({
+//     reducer:{
+//         [apiSlice.reducerPath]: apiSlice.reducer
+//     },
+//     middleware:(prevMiddlewares) => prevMiddlewares().concat(apiSlice.middleware),
+// });
+
+// export {store};

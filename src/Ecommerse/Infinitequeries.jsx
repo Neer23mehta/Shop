@@ -4,21 +4,6 @@ import React, { useState } from 'react';
 
 const LIMIT = 5;
 
-// Fetch paginated "new" data
-const fetchDetails = async ({ pageParam = 0 }) => {
-  const response = await axios.get(`http://localhost:4001/new?_start=${pageParam}&_limit=${LIMIT}`);
-  return response.data;
-};
-
-const addPost = async (post) => {
-  const response = await axios.post('http://localhost:4001/new', post);
-  return response.data;
-};
-
-const deletePost = async (id) => {
- const response = await axios.delete(`http://localhost:4001/new/${id}`);
-}
-
 const Infinitequeries = () => {
   const [name, setName] = useState('');
   const queryClient = useQueryClient();
@@ -33,16 +18,23 @@ const Infinitequeries = () => {
     isFetchingNextPage,
   } = useInfiniteQuery({
     queryKey: ['new'], 
-    queryFn: fetchDetails,
+    queryFn: async ({pageParam}) => {
+      const res = await axios.get(`http://localhost:4001/new?_start=${pageParam}&_limit=${LIMIT}`)
+      return res.data
+    },
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       if (lastPage.length < LIMIT) return undefined;
       return allPages.length * LIMIT;
     },
+    
   });
 
   const mutation = useMutation({
-    mutationFn: addPost,
+    mutationFn: async ({post}) => {
+      const res = await axios.post('http://localhost:4001/new',post)
+      return res.data
+    },
     onSuccess: (newData) => {
       queryClient.invalidateQueries('new',(oldQueryData)=>{
         return {
@@ -55,7 +47,10 @@ const Infinitequeries = () => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: deletePost,
+    mutationFn: async (id) => {
+      const res = await axios.delete(`http://localhost:4001/new/${id}`)
+      return res.data
+    },
     onSuccess: () => {
         queryClient.invalidateQueries(['new']);
         // setName(prev => prev.id !== id);
@@ -103,7 +98,7 @@ const Infinitequeries = () => {
             >
               <p>ID: {item.id}</p>
               <p>Name: {item.name}</p>
-              <button onClick={() => deleteMutation.mutate(item.id)}>Delete-List</button>
+              <button onClick={() => deleteMutation.mutate(item.id)} className='text-red-500'>Delete-List</button>
             </div>
           ))}
         </div>
