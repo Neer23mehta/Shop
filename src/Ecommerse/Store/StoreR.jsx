@@ -225,3 +225,28 @@ export const confirmorder = (order) => {
 // export {store};
 
 //we can use it as a hook 
+
+// import { createApi, fakeBaseQuery, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+// import axios from "axios";
+
+// const apiSlice = createApi({
+//     baseQuery: fetchBaseQuery({baseUrl:"https://jsonplaceholder.typicode.com"}),
+//     endpoints: (builder) => ({
+//         getAllTodos: builder.query({
+//             query: () => "/todos",
+//             transformResponse: (data) => {
+//                 return data || []
+//             }
+//         }),
+//         getAnotherTodo: builder.query({
+//             queryFn: () => "/todos/1",
+//             transformResponse: (data) => {
+//                 return data || {}
+//             }
+//         })
+//     })
+// });
+
+// export default apiSlice;
+
+// export const { useGetAllTodosQuery, useGetAnotherTodoQuery } = apiSlice;  
