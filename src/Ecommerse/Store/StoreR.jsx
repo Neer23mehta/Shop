@@ -250,3 +250,110 @@ export const confirmorder = (order) => {
 // export default apiSlice;
 
 // export const { useGetAllTodosQuery, useGetAnotherTodoQuery } = apiSlice;  
+
+// import apiSlice from "./apiSlice";
+
+// const deleteApiSlice = apiSlice.injectEndpoints({
+//   endpoints: (builder) => ({
+//     deleteTodos: builder.mutation({
+//       query: (id) => ({
+//         url: `/todos/${id}`,
+//         method: 'DELETE'
+//       }),
+//       async onQueryStarted(id, { dispatch, queryFulfilled }) {
+//         const patchResult = dispatch(
+//           apiSlice.util.updateQueryData("getAllTodos", undefined, (draft) => {
+//             return draft.filter(todo => todo.id !== id);
+//           })
+//         );
+//         try {
+//           await queryFulfilled;
+//         } catch {
+//           patchResult.undo();
+//         }
+//       }
+//     })
+//   })
+// });
+
+// export default deleteApiSlice;
+// export const { useDeleteTodosMutation } = deleteApiSlice;
+
+// import { createApi, fakeBaseQuery, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+// const apiSlice = createApi({
+//     reducerPath: "Todoget",
+//     keepUnusedDataFor:10,
+//     refetchOnFocus:true,
+//     refetchOnReconnect:true,
+//     tagTypes: ["addTodo, getAllTodos"],
+//     baseQuery: fetchBaseQuery({baseUrl:"https://jsonplaceholder.typicode.com"}),
+//     endpoints: (builder) => ({
+//         getAllTodos: builder.query({
+//             query: () => "/todos",
+//             transformResponse: (data) => {
+//                 return data || []
+//             },
+//             providesTags: ["getAllTodos"]
+//         }),
+//         getAnotherTodo: builder.query({
+//             query: (id) => `/todos/${id}`,
+//             transformResponse: (data) => {
+//                 return data || {}
+//             }
+//         }),
+//         addTodos: builder.mutation({
+//             query: (params) => {
+//                 return {
+//                     url: "/todos",
+//                     method: "POST",
+//                     body: {
+//                         title: params.title,   
+//                         completed: params.completed,
+//                         userId: params.userId
+//                       }
+//                 }
+//             },
+//             // invalidatesTags: ["getAllTodos"],
+//         })
+//     })
+// });
+
+// export default apiSlice;
+// export const { useGetAllTodosQuery, useLazyGetAnotherTodoQuery, useAddTodosMutation } = apiSlice;
+
+// import { configureStore } from "@reduxjs/toolkit";
+// import apiSlice from "./apiSlice";
+// import deleteApi from "./apiDelete";
+// import { setupListeners } from "@reduxjs/toolkit/query";
+
+
+// const store = configureStore({
+//     reducer:{
+//         [apiSlice.reducerPath]: apiSlice.reducer,
+//         [deleteApi.reducerPath]: deleteApi.reducer,
+//     },
+//     middleware:(prevMiddlewares) => prevMiddlewares().concat(apiSlice.middleware),
+// });
+
+// setupListeners(store.dispatch);
+
+// export {store};
+
+// const handleAddTodo = async () => {
+//     if (!enterTodo.trim()) return;
+  
+//     try {
+//       const newTodo = {
+//         title: enterTodo,
+//         completed: false,
+//         userId: 1111111
+//       };
+  
+//       const response = await addTodo(newTodo).unwrap();
+//       setTodos(prev => [...prev, response]);  
+//       setEnterTodo("");
+//     } catch (error) {
+//       console.error("Failed to add todo:", error);
+//     }
+//   };
